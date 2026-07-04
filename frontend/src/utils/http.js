@@ -1,6 +1,6 @@
 import axios from "axios";
 const http = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: "https://expense-tracker-mern-mv7e.onrender.com/api",
   headers: {
     "Content-Type": "application/json",
   },
