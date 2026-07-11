@@ -22,26 +22,6 @@ app.get("/", (req, res) => {
     message: "Setup Success",
   });
 });
-
-// SMTP Diagnostic Route (temporary - remove after testing)
-app.get("/test-smtp", async (req, res) => {
-  const net = await import("net");
-  const socket = new net.Socket();
-  socket.setTimeout(5000);
-  socket.on("connect", () => {
-    res.send("SMTP port reachable!");
-    socket.destroy();
-  });
-  socket.on("timeout", () => {
-    res.send("SMTP port blocked (timeout)");
-    socket.destroy();
-  });
-  socket.on("error", (err) => {
-    res.send("SMTP port blocked: " + err.message);
-  });
-  socket.connect(465, "smtp.gmail.com");
-});
-
 // Database Connection
 mongoose
   .connect(process.env.DB_URL)
