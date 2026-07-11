@@ -2,7 +2,7 @@
 
 A full-stack expense management app that lets users securely track, categorize, and visualize their financial transactions.
 
-🔗 Live Demo: expense-tracker-prags1.vercel.app
+🔗 Live Demo: [expense-tracker-prags1.vercel.app](https://expense-tracker-prags1.vercel.app/)
 
 
 🚀 Features
