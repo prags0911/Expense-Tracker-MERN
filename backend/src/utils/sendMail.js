@@ -1,28 +1,16 @@
-import dns from "dns";
-dns.setDefaultResultOrder("ipv4first"); // avoids the earlier ENETUNREACH/IPv6 issue on Render
-
-import nodemailer from "nodemailer";
-
+import { Resend } from "resend";
+ 
+const resend = new Resend(process.env.RESEND_API_KEY);
+ 
 export const sendMail = async (to, subject, text) => {
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true, // true for port 465, false for 587
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
-
-    const info = await transporter.sendMail({
-      from: process.env.EMAIL,
+    const info = await resend.emails.send({
+      from: "onboarding@resend.dev", // works immediately, no domain setup needed
       to,
       subject,
       text,
     });
-
-    console.log("Mail sent:", info.messageId);
+    console.log("Mail sent:", info.data?.id);
     return info;
   } catch (error) {
     console.error("Mail Error inside utility:", error);
