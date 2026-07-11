@@ -1,10 +1,14 @@
+import dns from "dns";
+dns.setDefaultResultOrder("ipv4first"); // avoids the earlier ENETUNREACH/IPv6 issue on Render
+
 import nodemailer from "nodemailer";
 
 export const sendMail = async (to, subject, text) => {
   try {
-    // Initialize the transporter dynamically when sendMail is called
     const transporter = nodemailer.createTransport({
-      host: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true for port 465, false for 587
       auth: {
         user: process.env.EMAIL,
         pass: process.env.EMAIL_PASSWORD,
