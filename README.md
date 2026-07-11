@@ -22,7 +22,7 @@ A full-stack MERN Expense Tracker application.
 ## Live Demo
 
 Frontend:
-[https://YOUR-VERCEL-URL.vercel.app](https://expense-tracker-prags1.vercel.app/)
+https://expense-tracker-prags1.vercel.app/
 
 Backend:
 https://expense-tracker-mern-mv7e.onrender.com
